@@ -259,6 +259,7 @@ span {
 }
 .portfolio-box:hover img {
     transform: scale(1.1);
+    filter: blur(6px);
 }
 .portfolio-box .portfolio-layer{
     position: absolute;
@@ -281,13 +282,13 @@ span {
 }
 .portfolio-layer h4{
     font-size: 4rem;
-    color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .portfolio-layer p {
     font-size: 1.6rem;
     margin: .3rem 0 1rem;
-    color: var(--text-color2);
+    color: var(--text-color);
     font-weight: bold;
 }
 
