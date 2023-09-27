@@ -38,7 +38,7 @@ section{
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 9%;
+    padding: 2rem 3%;
     background: var(--bg-color);
     display: flex;
     justify-content: space-between;
@@ -391,10 +391,7 @@ span {
 }
 @media screen and (max-width: 991px) {
     .header{
-        padding: 2rem 3%;
-    }
-    section {
-        padding: 10rem 3% 2rem;
+        width: 100%;
     }
 
     .services {
@@ -419,6 +416,7 @@ span {
 }
 
 @media screen and (max-width: 768px) {
+    
     #menu-icon{
         display: block;
     }
