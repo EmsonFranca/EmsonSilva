@@ -12,6 +12,19 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="./src/assets/css/style.css" />
+    <link rel="shortcut icon" href="./portfolio.png" type="image/x-icon">
+<link rel="manifest" href="./manifest.json">
+<script>
+  if (typeof navigator.serviceWorker !== "undefined") {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(function(registration) {
+        console.log("Service Worker registered with scope:", registration.scope);
+      })
+      .catch(function(error) {
+        console.error("Service Worker registration failed:", error);
+      });
+  }
+</script>
   </head>
 
   <body>

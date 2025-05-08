@@ -1,0 +1,27 @@
+{
+  "background_color": "#4f5963",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Portfolio",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Profissional",
+  "start_url": "index.html",
+  "theme_color": "#4f5963",
+  "id": "rb.ved.asrefu.ved.30-puorg.nosme",
+  "icons": [
+    {
+      "src": "portfolio.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "portfolio.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
+
