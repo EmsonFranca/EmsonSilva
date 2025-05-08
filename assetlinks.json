@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "br.dev.ufersa.dev.group_03.emson.www.twa",
+        "sha256_cert_fingerprints": ["84:6A:5D:79:75:F9:9F:77:45:14:B8:85:20:C5:AA:69:26:80:DE:C4:92:32:B2:27:71:52:8B:5D:E3:BA:A9:D7"]
+      }
+    }]
