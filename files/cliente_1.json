@@ -1,0 +1,27 @@
+[
+  {
+    "Nome": "Edson França",
+    "CPF": "123.456.789-00",
+    "Compra": ["Arroz", "Feijão", "Macarrão"]
+  },
+  {
+    "Nome": "Carla Mendes",
+    "CPF": "234.567.890-11",
+    "Compra": ["Leite", "Pão", "Manteiga"]
+  },
+  {
+    "Nome": "João Ribeiro",
+    "CPF": "345.678.901-22",
+    "Compra": ["Café", "Açúcar", "Biscoito"]
+  },
+  {
+    "Nome": "Luciana Torres",
+    "CPF": "456.789.012-33",
+    "Compra": ["Sabonete", "Shampoo", "Papel higiênico"]
+  },
+  {
+    "Nome": "Pedro Silva",
+    "CPF": "567.890.123-44",
+    "Compra": ["Detergente", "Esponja", "Desinfetante"]
+  }
+]

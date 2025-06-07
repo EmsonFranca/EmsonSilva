@@ -1,0 +1,27 @@
+[
+  {
+    "Nome": "Karina Meireles",
+    "CPF": "666.777.888-99",
+    "Compra": ["Creme dental", "Escova de dente", "Fio dental"]
+  },
+  {
+    "Nome": "Leonardo Pires",
+    "CPF": "777.888.999-00",
+    "Compra": ["Chá", "Bolacha", "Gelatina"]
+  },
+  {
+    "Nome": "Marcela Antunes",
+    "CPF": "888.999.000-11",
+    "Compra": ["Cereal", "Aveia", "Leite em pó"]
+  },
+  {
+    "Nome": "Nelson Ferreira",
+    "CPF": "999.000.111-22",
+    "Compra": ["Alface", "Tomate", "Pepino"]
+  },
+  {
+    "Nome": "Olívia Vasconcelos",
+    "CPF": "000.111.222-33",
+    "Compra": ["Vinagre", "Azeite", "Sal"]
+  }
+]

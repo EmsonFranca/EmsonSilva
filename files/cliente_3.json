@@ -1,0 +1,27 @@
+[
+  {
+    "Nome": "Fábio Rocha",
+    "CPF": "111.222.333-44",
+    "Compra": ["Molho de tomate", "Queijo", "Presunto"]
+  },
+  {
+    "Nome": "Gisele Lima",
+    "CPF": "222.333.444-55",
+    "Compra": ["Batata", "Cenoura", "Beterraba"]
+  },
+  {
+    "Nome": "Henrique Moraes",
+    "CPF": "333.444.555-66",
+    "Compra": ["Iogurte", "Granola", "Mel"]
+  },
+  {
+    "Nome": "Isabela Martins",
+    "CPF": "444.555.666-77",
+    "Compra": ["Papel toalha", "Guardanapo", "Filtro de café"]
+  },
+  {
+    "Nome": "Jorge Almeida",
+    "CPF": "555.666.777-88",
+    "Compra": ["Peixe", "Camarão", "Lula"]
+  }
+]

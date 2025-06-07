@@ -1,0 +1,27 @@
+[
+  {
+    "Nome": "Paulo Barreto",
+    "CPF": "101.202.303-44",
+    "Compra": ["Feijão preto", "Feijão carioca", "Grão de bico"]
+  },
+  {
+    "Nome": "Quésia Bernardes",
+    "CPF": "202.303.404-55",
+    "Compra": ["Toalha de papel", "Saco de lixo", "Rodo"]
+  },
+  {
+    "Nome": "Renan Cardoso",
+    "CPF": "303.404.505-66",
+    "Compra": ["Cerveja", "Amendoim", "Gelo"]
+  },
+  {
+    "Nome": "Simone Rezende",
+    "CPF": "404.505.606-77",
+    "Compra": ["Lentilha", "Ervilha", "Milho"]
+  },
+  {
+    "Nome": "Thiago Silveira",
+    "CPF": "505.606.707-88",
+    "Compra": ["Panetone", "Chester", "Vinho"]
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "Nome": "Aline Castro",
+    "CPF": "678.901.234-55",
+    "Compra": ["Leite condensado", "Farinha", "Ovos"]
+  },
+  {
+    "Nome": "Bruno Lopes",
+    "CPF": "789.012.345-66",
+    "Compra": ["Água", "Refrigerante", "Suco"]
+  },
+  {
+    "Nome": "Camila Duarte",
+    "CPF": "890.123.456-77",
+    "Compra": ["Carne", "Linguiça", "Frango"]
+  },
+  {
+    "Nome": "Diego Nunes",
+    "CPF": "901.234.567-88",
+    "Compra": ["Salgadinho", "Chocolate", "Sorvete"]
+  },
+  {
+    "Nome": "Elaine Souza",
+    "CPF": "012.345.678-99",
+    "Compra": ["Sabão em pó", "Amaciante", "Alvejante"]
+  }
+]
