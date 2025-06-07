@@ -25,7 +25,7 @@ async function buscarDados() {
   carregando.classList.remove("escondido");
 
   if (!termo) {
-    erro.textContent = "Digite um profuto para buscar.";
+    erro.textContent = "Digite um produto para buscar.";
     erro.classList.remove("escondido");
     carregando.classList.add("escondido");
     return;

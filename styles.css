@@ -1,6 +1,23 @@
+:root {
+  --primary-color: #a0b6b9;
+  --secondary-color: #26c6da;
+  --background-color: #121212ce;
+  --text-color: #e0e0e0;
+  --error-color: #ef5350;
+  --input-border-color: #444;
+  --input-bg-color: #2a2a3a;
+  --panel-bg-color: #1e1e2b;
+  --box-shadow-color: rgba(0, 0, 0, 0.4);
+  --loading-color: #ffeb3b;
+  --result-bg-color: #1b1b2a;
+  --result-text-color: #b2ebf2;
+  --result-border-color: #4dd0e144;
+  --monospace-font: "Courier New", monospace;
+}
+
 body {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
@@ -9,15 +26,15 @@ body {
 .painel-consulta {
   max-width: 640px;
   margin: 60px auto;
-  background-color: #1e1e2b;
+  background-color: var(--panel-bg-color);
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 20px var(--box-shadow-color);
 }
 
 h1 {
   text-align: center;
-  color: #4dd0e1;
+  color: var(--primary-color);
   font-size: 1.7rem;
   margin-bottom: 24px;
 }
@@ -26,23 +43,23 @@ h1 {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #444;
+  border: 1px solid var(--input-border-color);
   font-size: 15px;
   margin-bottom: 14px;
-  background-color: #2a2a3a;
-  color: #fff;
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
 }
 
 #inputProduto:focus {
   outline: none;
-  border-color: #4dd0e1;
+  border-color: var(--primary-color);
 }
 
 #botaoBuscar {
   width: 100%;
   padding: 12px;
-  background-color: #4dd0e1;
-  color: #121212;
+  background-color: var(--primary-color);
+  color: var(--background-color);
   font-size: 16px;
   font-weight: 600;
   border: none;
@@ -52,7 +69,7 @@ h1 {
 }
 
 #botaoBuscar:hover {
-  background-color: #26c6da;
+  background-color: var(--secondary-color);
 }
 
 #infoCarregando,
@@ -63,22 +80,22 @@ h1 {
 }
 
 #infoCarregando {
-  color: #ffeb3b;
+  color: var(--loading-color);
 }
 
 #mensagemErro {
-  color: #ef5350;
+  color: var(--error-color);
   font-weight: bold;
 }
 
 .caixa-resultados {
-  background-color: #1b1b2a;
-  color: #b2ebf2;
-  border: 1px solid #4dd0e144;
+  background-color: var(--result-bg-color);
+  color: var(--result-text-color);
+  border: 1px solid var(--result-border-color);
   padding: 16px;
   border-radius: 8px;
   white-space: pre-wrap;
-  font-family: "Courier New", monospace;
+  font-family: var(--monospace-font);
   max-height: 400px;
   overflow-y: auto;
 }
