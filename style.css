@@ -1,9 +1,9 @@
 :root {
     /* Cores Primárias */
-    --color-primary-blue: #4a90e2; /* Azul principal dos botões e títulos */
-    --color-secondary-blue: #357bd8; /* Azul mais escuro para hover */
+    --color-primary-blue: #66df76; /* Azul principal dos botões e títulos */
+    --color-secondary-blue: #03e621; /* Azul mais escuro para hover */
     --color-accent-green: #28a745; /* Verde para sucesso/destaque (opção 1 user-count) */
-    --color-dark-text: #1a202c; /* Cor para títulos mais escuros */
+    --color-dark-text: #1a202cc2; /* Cor para títulos mais escuros */
     --color-medium-text: #333; /* Cor geral do texto */
     --color-light-text: #6b7280; /* Tom de cinza para parágrafos e labels */
 
@@ -14,7 +14,7 @@
     --color-border-light: #f0f0f0; /* Borda leve dos cards */
     --color-border-input: #d1d5db; /* Borda dos inputs */
     --color-focus-border: #4a90e2; /* Borda ao focar no input */
-    --color-border-highlight: #007bff; /* Cor da borda de destaque do card de contagem (opção 2) */
+    --color-border-highlight: #00ff15; /* Cor da borda de destaque do card de contagem (opção 2) */
 
     /* Cores de Mensagens */
     --color-success-bg: #d4edda;
