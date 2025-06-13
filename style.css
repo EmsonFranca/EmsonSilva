@@ -1,0 +1,339 @@
+:root {
+    /* Cores Primárias */
+    --color-primary-blue: #4a90e2; /* Azul principal dos botões e títulos */
+    --color-secondary-blue: #357bd8; /* Azul mais escuro para hover */
+    --color-accent-green: #28a745; /* Verde para sucesso/destaque (opção 1 user-count) */
+    --color-dark-text: #1a202c; /* Cor para títulos mais escuros */
+    --color-medium-text: #333; /* Cor geral do texto */
+    --color-light-text: #6b7280; /* Tom de cinza para parágrafos e labels */
+
+    /* Cores de Fundo e Borda */
+    --color-background-light: #ece9e6; /* Parte clara do gradiente de fundo */
+    --color-background-white: #ffffff; /* Fundo principal dos cards e container */
+    --color-background-input: #f9fafb; /* Fundo levemente acinzentado para inputs */
+    --color-border-light: #f0f0f0; /* Borda leve dos cards */
+    --color-border-input: #d1d5db; /* Borda dos inputs */
+    --color-focus-border: #4a90e2; /* Borda ao focar no input */
+    --color-border-highlight: #007bff; /* Cor da borda de destaque do card de contagem (opção 2) */
+
+    /* Cores de Mensagens */
+    --color-success-bg: #d4edda;
+    --color-success-text: #155724;
+    --color-success-border: #c3e6cb;
+    --color-error-bg: #f8d7da;
+    --color-error-text: #721c24;
+    --color-error-border: #f5c6cb;
+
+    /* Sombras */
+    --shadow-container: 0 12px 25px rgba(0, 0, 0, 0.1);
+    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.06);
+    --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.09);
+    --shadow-button: 0 4px 10px rgba(74, 144, 226, 0.2);
+    --shadow-button-hover: 0 6px 15px rgba(74, 144, 226, 0.3);
+    --shadow-input-focus: 0 0 0 3px rgba(74, 144, 226, 0.25);
+    --shadow-user-count-display: 2px 2px 5px rgba(0, 123, 255, 0.2); /* Depende da cor escolhida */
+
+    /* Espaçamentos e Tamanhos */
+    --spacing-xs: 5px;
+    --spacing-sm: 8px;
+    --spacing-md: 10px;
+    --spacing-lg: 12px;
+    --spacing-xl: 15px;
+    --spacing-xxl: 20px;
+    --spacing-xxxl: 25px;
+    --spacing-xxxxl: 30px;
+    --padding-card: 25px;
+    --padding-input: 12px;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 15px;
+}
+
+/* Reset Básico e Fontes */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, var(--color-background-light), var(--color-background-white));
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--color-medium-text);
+}
+
+/* Container Principal do Dashboard */
+.container {
+    background-color: var(--color-background-white);
+    padding: var(--spacing-xxxxl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-container);
+    width: 90%;
+    max-width: 1300px;
+    max-height: 95vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Títulos da Página */
+h1 {
+    text-align: center;
+    color: var(--color-dark-text);
+    margin-bottom: var(--spacing-xxxl);
+    font-size: 2.5em;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* Parágrafos gerais */
+p {
+    text-align: center;
+    color: var(--color-light-text);
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+/* Layout de Duas Colunas Principal */
+.main-content {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-xxxxl);
+    min-height: 0;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxxxl);
+    min-width: 0;
+}
+
+/* Estilo do Card Geral */
+.card {
+    background-color: var(--color-background-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius-md);
+    padding: var(--padding-card);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Títulos dos Cards */
+.card h2 {
+    text-align: center;
+    color: var(--color-primary-blue);
+    margin-bottom: var(--spacing-xxl);
+    font-size: 1.8em;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Estilo do Card de Contagem de Usuários */
+.user-count-card {
+    background-color: var(--color-background-white);
+    border: none;
+    border-left: 8px solid var(--color-border-highlight); /* Usando a cor da borda de destaque */
+    color: var(--color-medium-text);
+    text-align: center;
+    padding: 35px 25px 35px 35px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    min-height: 160px;
+    box-shadow: var(--shadow-card); /* Usando a sombra padrão do card, pode ser ajustado */
+}
+
+.user-count-card p {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--color-light-text);
+    margin-bottom: var(--spacing-xl);
+}
+
+.user-count-display {
+    font-size: 3.5em;
+    font-weight: 900;
+    color: var(--color-border-highlight); /* Usando a cor da borda de destaque para o número */
+    text-shadow: var(--shadow-user-count-display);
+    line-height: 1;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Formulário e Seção de Cadastro em Massa */
+.form-section form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    flex: 1;
+    overflow-y: auto;
+    padding-right: var(--spacing-sm);
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--color-light-text);
+    font-size: 1em;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: calc(100% - (var(--padding-input) * 2)); /* Ajuste usando a variável de padding */
+    padding: var(--padding-input);
+    border: 1px solid var(--color-border-input);
+    border-radius: var(--border-radius-sm);
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    background-color: var(--color-background-input);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: var(--color-focus-border);
+    box-shadow: var(--shadow-input-focus);
+    background-color: var(--color-background-white);
+    outline: none;
+}
+
+button {
+    background-color: var(--color-primary-blue);
+    color: var(--color-background-white);
+    padding: var(--padding-input) var(--spacing-xxl);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 1.05em;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: var(--spacing-xl);
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-button);
+}
+
+button:hover {
+    background-color: var(--color-secondary-blue);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-button-hover);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(74, 144, 226, 0.2); /* Manter uma sombra leve no active */
+}
+
+.message {
+    text-align: center;
+    margin-top: var(--spacing-xxl);
+    padding: var(--padding-input);
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    font-size: 0.95em;
+    flex-shrink: 0;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.success {
+    background-color: var(--color-success-bg);
+    color: var(--color-success-text);
+    border: 1px solid var(--color-success-border);
+}
+
+.message.error {
+    background-color: var(--color-error-bg);
+    color: var(--color-error-text);
+    border: 1px solid var(--color-error-border);
+}
+
+#refreshUserCount {
+    background-color: #6c757d; /* Mantido fixo, mas pode ser uma variável também se quiser */
+    margin-top: var(--spacing-xl);
+    box-shadow: 0 4px 10px rgba(108, 117, 125, 0.2);
+}
+
+#refreshUserCount:hover {
+    background-color: #5a6268;
+    box-shadow: 0 6px 15px rgba(108, 117, 125, 0.3);
+}
+
+#progress {
+    font-weight: 700;
+    color: var(--color-primary-blue);
+    font-size: 1.1em;
+    margin-top: var(--spacing-md);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
+        gap: var(--spacing-xxxl);
+    }
+
+    .container {
+        padding: var(--spacing-xxxl);
+        max-height: unset;
+        overflow-y: auto;
+    }
+
+    .left-column, .right-column {
+        min-width: unset;
+        gap: var(--spacing-xxxl);
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    .user-count-display {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .card h2 {
+        font-size: 1.6em;
+    }
+
+    .user-count-display {
+        font-size: 2.8em;
+    }
+
+    .card {
+        padding: var(--spacing-xxl);
+    }
+
+    input, button {
+        font-size: 0.95em;
+        padding: var(--spacing-md);
+    }
+}
