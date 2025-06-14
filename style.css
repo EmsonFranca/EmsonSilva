@@ -1,14 +1,14 @@
 :root {
     /* Cores Primárias */
-    --color-primary-blue: #66df76; /* Azul principal dos botões e títulos */
-    --color-secondary-blue: #03e621; /* Azul mais escuro para hover */
+    --color-primary-green: #66df76; /* Azul principal dos botões e títulos */
+    --color-secondary-green: #03e621; /* Azul mais escuro para hover */
     --color-accent-green: #28a745; /* Verde para sucesso/destaque (opção 1 user-count) */
     --color-dark-text: #1a202cc2; /* Cor para títulos mais escuros */
     --color-medium-text: #333; /* Cor geral do texto */
     --color-light-text: #6b7280; /* Tom de cinza para parágrafos e labels */
 
     /* Cores de Fundo e Borda */
-    --color-background-light: #ece9e6; /* Parte clara do gradiente de fundo */
+    --color-background-light: #2a912f; /* Parte clara do gradiente de fundo */
     --color-background-white: #ffffff; /* Fundo principal dos cards e container */
     --color-background-input: #f9fafb; /* Fundo levemente acinzentado para inputs */
     --color-border-light: #f0f0f0; /* Borda leve dos cards */
@@ -47,6 +47,11 @@
     --border-radius-sm: 8px;
     --border-radius-md: 12px;
     --border-radius-lg: 15px;
+    
+    /* Variáveis para ajuste do tamanho principal (agora com um ajuste mais preciso para 1366px) */
+    --container-max-width-desktop: 1100px; /* Um pouco menor para 1366px */
+    --main-content-gap-desktop: 25px; /* Espaçamento entre colunas para desktop */
+    --card-padding-desktop: 25px; /* Padding padrão para cards em desktop */
 }
 
 /* Reset Básico e Fontes */
@@ -133,7 +138,7 @@ p {
 /* Títulos dos Cards */
 .card h2 {
     text-align: center;
-    color: var(--color-primary-blue);
+    color: var(--color-primary-green);
     margin-bottom: var(--spacing-xxl);
     font-size: 1.8em;
     font-weight: 700;
@@ -215,7 +220,7 @@ input[type="email"]:focus {
 }
 
 button {
-    background-color: var(--color-primary-blue);
+    background-color: var(--color-primary-green);
     color: var(--color-background-white);
     padding: var(--padding-input) var(--spacing-xxl);
     border: none;
@@ -232,7 +237,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--color-secondary-blue);
+    background-color: var(--color-secondary-green);
     transform: translateY(-3px);
     box-shadow: var(--shadow-button-hover);
 }
@@ -283,11 +288,33 @@ button:active {
 
 #progress {
     font-weight: 700;
-    color: var(--color-primary-blue);
+    color: var(--color-primary-green);
     font-size: 1.1em;
     margin-top: var(--spacing-md);
 }
+/* Otimização para Desktop (1366px de Largura)*/
+@media (max-width: 1366px) {
+    .container {
+        max-width: var(--container-max-width-desktop); /* Usando a nova variável para desktops */
+        padding: var(--spacing-xxxl); /* Pode ajustar o padding se achar necessário */
+    }
 
+    .main-content {
+        gap: var(--main-content-gap-desktop); /* Espaçamento ajustado para desktops */
+    }
+
+    .card {
+        padding: var(--card-padding-desktop); /* Padding ajustado para cards em desktops */
+    }
+
+    h1 {
+        font-size: 2.2em; /* Um pouco menor para essa resolução */
+    }
+
+    .user-count-display {
+        font-size: 3em; /* Ajuste no tamanho do número de contagem */
+    }
+}
 /* Media Queries para Responsividade */
 @media (max-width: 992px) {
     .main-content {
