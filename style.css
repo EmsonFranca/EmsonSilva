@@ -1,366 +1,238 @@
 :root {
-    /* Cores Primárias */
-    --color-primary-green: #66df76; /* Azul principal dos botões e títulos */
-    --color-secondary-green: #03e621; /* Azul mais escuro para hover */
-    --color-accent-green: #28a745; /* Verde para sucesso/destaque (opção 1 user-count) */
-    --color-dark-text: #1a202cc2; /* Cor para títulos mais escuros */
-    --color-medium-text: #333; /* Cor geral do texto */
-    --color-light-text: #6b7280; /* Tom de cinza para parágrafos e labels */
+    /* Cores da Paleta */
+    --primary-color: #455A64; /* Cinza azulado escuro - botões primários */
+    --secondary-color: #607D8B; /* Azul acinzentado - textos, botões secundários */
+    --highlight-color: #00BCD4; /* Turquesa - destaque (ex: foco em input) */
+    --background-light: #F0F4F8; /* Base do gradiente de fundo */
+    --background-dark: #D9E2EC; /* Fim do gradiente de fundo */
+    --container-bg: #FFFFFF; /* Branco - fundo do container */
+    --border-color: #CFD8DC; /* Cinza claro - bordas */
+    --text-color: #333; /* Cor geral do texto */
+    --label-color: #555; /* Cor dos labels */
+    --small-text-color: #777; /* Cor do texto pequeno (small) */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Cor da sombra */
+    --disabled-btn-color: #cccccc; /* Cor de botão desabilitado */
 
-    /* Cores de Fundo e Borda */
-    --color-background-light: #2a912f; /* Parte clara do gradiente de fundo */
-    --color-background-white: #ffffff; /* Fundo principal dos cards e container */
-    --color-background-input: #f9fafb; /* Fundo levemente acinzentado para inputs */
-    --color-border-light: #f0f0f0; /* Borda leve dos cards */
-    --color-border-input: #d1d5db; /* Borda dos inputs */
-    --color-focus-border: #4a90e2; /* Borda ao focar no input */
-    --color-border-highlight: #00ff15; /* Cor da borda de destaque do card de contagem (opção 2) */
+    /* Cores de Mensagem */
+    --success-bg: #d4edda;
+    --success-text: #155724;
+    --success-border: #c3e6cb;
+    --error-bg: #f8d7da;
+    --error-text: #721c24;
+    --error-border: #f5c6cb;
+    --info-bg: #d1ecf1;
+    --info-text: #0c5460;
+    --info-border: #bee5eb;
 
-    /* Cores de Mensagens */
-    --color-success-bg: #d4edda;
-    --color-success-text: #155724;
-    --color-success-border: #c3e6cb;
-    --color-error-bg: #f8d7da;
-    --color-error-text: #721c24;
-    --color-error-border: #f5c6cb;
+    /* Tamanhos e Espaçamentos */
+    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --body-margin: 20px;
+    --container-max-width: 500px;
+    --container-padding: 40px;
+    --border-radius-base: 12px;
+    --box-shadow-base: 0 10px 30px var(--shadow-color);
+    --heading-margin-bottom: 25px;
+    --form-group-margin-bottom: 20px;
+    --label-margin-bottom: 8px;
+    --input-padding: 12px;
+    --input-border-radius: 6px;
+    --input-font-size: 16px;
+    --small-text-margin-top: 5px;
+    --small-text-font-size: 0.85em;
+    --btn-padding: 12px 20px;
+    --btn-border-radius: 6px;
+    --btn-font-size: 16px;
+    --btn-font-weight: 600;
+    --btn-margin-top: 15px;
+    --btn-secondary-padding: 10px 18px;
+    --btn-secondary-margin-top: 10px;
+    --message-margin-top: 25px;
+    --message-padding: 12px;
+    --message-border-radius: 6px;
+    --message-font-size: 1.05em;
+    --hr-margin: 30px 0;
+    --button-section-margin-top: 30px;
+    --button-section-padding-top: 20px;
+    --button-section-gap: 10px;
 
-    /* Sombras */
-    --shadow-container: 0 12px 25px rgba(0, 0, 0, 0.1);
-    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.06);
-    --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.09);
-    --shadow-button: 0 4px 10px rgba(74, 144, 226, 0.2);
-    --shadow-button-hover: 0 6px 15px rgba(74, 144, 226, 0.3);
-    --shadow-input-focus: 0 0 0 3px rgba(74, 144, 226, 0.25);
-    --shadow-user-count-display: 2px 2px 5px rgba(0, 123, 255, 0.2); /* Depende da cor escolhida */
-
-    /* Espaçamentos e Tamanhos */
-    --spacing-xs: 5px;
-    --spacing-sm: 8px;
-    --spacing-md: 10px;
-    --spacing-lg: 12px;
-    --spacing-xl: 15px;
-    --spacing-xxl: 20px;
-    --spacing-xxxl: 25px;
-    --spacing-xxxxl: 30px;
-    --padding-card: 25px;
-    --padding-input: 12px;
-    --border-radius-sm: 8px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 15px;
-    
-    /* Variáveis para ajuste do tamanho principal (agora com um ajuste mais preciso para 1366px) */
-    --container-max-width-desktop: 1100px; /* Um pouco menor para 1366px */
-    --main-content-gap-desktop: 25px; /* Espaçamento entre colunas para desktop */
-    --card-padding-desktop: 25px; /* Padding padrão para cards em desktop */
+    /* Transições e Animações */
+    --transition-speed-fast: 0.2s;
+    --transition-speed-medium: 0.3s;
+    --animation-duration-fadeIn: 0.5s;
 }
 
-/* Reset Básico e Fontes */
 body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(to right, var(--color-background-light), var(--color-background-white));
-    margin: 0;
+    font-family: var(--font-family-base);
+    margin: var(--body-margin);
+    padding: 0;
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: var(--color-medium-text);
+    box-sizing: border-box;
 }
 
-/* Container Principal do Dashboard */
 .container {
-    background-color: var(--color-background-white);
-    padding: var(--spacing-xxxxl);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-container);
+    max-width: var(--container-max-width);
     width: 90%;
-    max-width: 1300px;
-    max-height: 95vh;
+    margin: var(--body-margin) auto;
+    background-color: var(--container-bg);
+    padding: var(--container-padding);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--box-shadow-base);
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
 }
 
-/* Títulos da Página */
-h1 {
+h1, h2 {
+    color: var(--secondary-color); /* Usando a cor de texto/secundária */
     text-align: center;
-    color: var(--color-dark-text);
-    margin-bottom: var(--spacing-xxxl);
-    font-size: 2.5em;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-}
-
-/* Parágrafos gerais */
-p {
-    text-align: center;
-    color: var(--color-light-text);
-    font-size: 1.05em;
-    line-height: 1.6;
-}
-
-/* Layout de Duas Colunas Principal */
-.main-content {
-    display: flex;
-    flex: 1;
-    gap: var(--spacing-xxxxl);
-    min-height: 0;
-}
-
-.left-column, .right-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xxxxl);
-    min-width: 0;
-}
-
-/* Estilo do Card Geral */
-.card {
-    background-color: var(--color-background-white);
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--border-radius-md);
-    padding: var(--padding-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-card-hover);
-}
-
-/* Títulos dos Cards */
-.card h2 {
-    text-align: center;
-    color: var(--color-primary-green);
-    margin-bottom: var(--spacing-xxl);
-    font-size: 1.8em;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
-/* Estilo do Card de Contagem de Usuários */
-.user-count-card {
-    background-color: var(--color-background-white);
-    border: none;
-    border-left: 8px solid var(--color-border-highlight); /* Usando a cor da borda de destaque */
-    color: var(--color-medium-text);
-    text-align: center;
-    padding: 35px 25px 35px 35px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    min-height: 160px;
-    box-shadow: var(--shadow-card); /* Usando a sombra padrão do card, pode ser ajustado */
-}
-
-.user-count-card p {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: var(--color-light-text);
-    margin-bottom: var(--spacing-xl);
-}
-
-.user-count-display {
-    font-size: 3.5em;
-    font-weight: 900;
-    color: var(--color-border-highlight); /* Usando a cor da borda de destaque para o número */
-    text-shadow: var(--shadow-user-count-display);
-    line-height: 1;
-    display: block;
-    margin-bottom: var(--spacing-md);
-}
-
-/* Formulário e Seção de Cadastro em Massa */
-.form-section form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xl);
-    flex: 1;
-    overflow-y: auto;
-    padding-right: var(--spacing-sm);
+    margin-bottom: var(--heading-margin-bottom);
+    font-weight: var(--btn-font-weight);
 }
 
 .form-group {
-    margin-bottom: 0;
+    margin-bottom: var(--form-group-margin-bottom);
 }
 
 label {
     display: block;
-    margin-bottom: var(--spacing-sm);
-    font-weight: 600;
-    color: var(--color-light-text);
-    font-size: 1em;
+    margin-bottom: var(--label-margin-bottom);
+    font-weight: 500;
+    color: var(--label-color);
 }
 
 input[type="text"],
-input[type="email"] {
-    width: calc(100% - (var(--padding-input) * 2)); /* Ajuste usando a variável de padding */
-    padding: var(--padding-input);
-    border: 1px solid var(--color-border-input);
-    border-radius: var(--border-radius-sm);
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: var(--input-padding);
+    border: 1px solid var(--border-color); /* Usando a cor de borda */
+    border-radius: var(--input-border-radius);
     box-sizing: border-box;
-    font-size: 1em;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    background-color: var(--color-background-input);
+    font-size: var(--input-font-size);
+    transition: border-color var(--transition-speed-medium) ease, box-shadow var(--transition-speed-medium) ease;
 }
 
 input[type="text"]:focus,
-input[type="email"]:focus {
-    border-color: var(--color-focus-border);
-    box-shadow: var(--shadow-input-focus);
-    background-color: var(--color-background-white);
+input[type="email"]:focus,
+input[type="tel"]:focus {
+    border-color: var(--highlight-color); /* Usando a cor de destaque no foco */
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.25); /* Sombra com a cor de destaque */
     outline: none;
 }
 
-button {
-    background-color: var(--color-primary-green);
-    color: var(--color-background-white);
-    padding: var(--padding-input) var(--spacing-xxl);
-    border: none;
-    border-radius: var(--border-radius-sm);
-    cursor: pointer;
-    font-size: 1.05em;
+small {
+    display: block;
+    margin-top: var(--small-text-margin-top);
+    color: var(--small-text-color);
+    font-size: var(--small-text-font-size);
+}
+
+.btn {
+    display: block;
     width: 100%;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    margin-top: var(--spacing-xl);
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    flex-shrink: 0;
-    box-shadow: var(--shadow-button);
+    padding: var(--btn-padding);
+    border: none;
+    border-radius: var(--btn-border-radius);
+    cursor: pointer;
+    font-size: var(--btn-font-size);
+    font-weight: var(--btn-font-weight);
+    color: var(--container-bg); /* Texto do botão branco */
+    transition: background-color var(--transition-speed-medium) ease, transform var(--transition-speed-fast) ease;
+    box-sizing: border-box;
+    margin-top: var(--btn-margin-top);
 }
 
-button:hover {
-    background-color: var(--color-secondary-green);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-button-hover);
+.btn.primary {
+    background-color: var(--primary-color); /* Cor principal dos botões */
 }
 
-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(74, 144, 226, 0.2); /* Manter uma sombra leve no active */
+.btn.primary:hover {
+    background-color: darken(var(--primary-color), 10%); /* Escurece um pouco no hover (conceitual, CSS puro não tem darken) */
+    /* Para CSS puro, você teria que definir uma cor levemente mais escura ou usar filter: brightness() */
+    background-color: #37474F; /* Uma cor mais escura que #455A64 */
+    transform: translateY(-2px);
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color); /* Cor secundária dos botões */
+    margin-top: var(--btn-secondary-margin-top);
+    display: inline-block;
+    width: auto;
+    padding: var(--btn-secondary-padding);
+}
+
+.btn.secondary:hover {
+    background-color: darken(var(--secondary-color), 10%);
+    /* Para CSS puro, você teria que definir uma cor levemente mais escura ou usar filter: brightness() */
+    background-color: #546E7A; /* Uma cor mais escura que #607D8B */
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    background-color: var(--disabled-btn-color);
+    cursor: not-allowed;
+    transform: none;
 }
 
 .message {
+    margin-top: var(--message-margin-top);
+    padding: var(--message-padding);
+    border-radius: var(--message-border-radius);
     text-align: center;
-    margin-top: var(--spacing-xxl);
-    padding: var(--padding-input);
-    border-radius: var(--border-radius-sm);
-    font-weight: 600;
-    font-size: 0.95em;
-    flex-shrink: 0;
-    animation: fadeIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    font-weight: var(--btn-font-weight);
+    font-size: var(--message-font-size);
+    opacity: 0;
+    animation: fadeIn var(--animation-duration-fadeIn) forwards;
 }
 
 .message.success {
-    background-color: var(--color-success-bg);
-    color: var(--color-success-text);
-    border: 1px solid var(--color-success-border);
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
 }
 
 .message.error {
-    background-color: var(--color-error-bg);
-    color: var(--color-error-text);
-    border: 1px solid var(--color-error-border);
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid var(--error-border);
 }
 
-#refreshUserCount {
-    background-color: #6c757d; /* Mantido fixo, mas pode ser uma variável também se quiser */
-    margin-top: var(--spacing-xl);
-    box-shadow: 0 4px 10px rgba(108, 117, 125, 0.2);
+.message.info {
+    background-color: var(--info-bg);
+    color: var(--info-text);
+    border: 1px solid var(--info-border);
 }
 
-#refreshUserCount:hover {
-    background-color: #5a6268;
-    box-shadow: 0 6px 15px rgba(108, 117, 125, 0.3);
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-#progress {
-    font-weight: 700;
-    color: var(--color-primary-green);
-    font-size: 1.1em;
-    margin-top: var(--spacing-md);
-}
-/* Otimização para Desktop (1366px de Largura)*/
-@media (max-width: 1366px) {
-    .container {
-        max-width: var(--container-max-width-desktop); /* Usando a nova variável para desktops */
-        padding: var(--spacing-xxxl); /* Pode ajustar o padding se achar necessário */
-    }
-
-    .main-content {
-        gap: var(--main-content-gap-desktop); /* Espaçamento ajustado para desktops */
-    }
-
-    .card {
-        padding: var(--card-padding-desktop); /* Padding ajustado para cards em desktops */
-    }
-
-    h1 {
-        font-size: 2.2em; /* Um pouco menor para essa resolução */
-    }
-
-    .user-count-display {
-        font-size: 3em; /* Ajuste no tamanho do número de contagem */
-    }
-}
-/* Media Queries para Responsividade */
-@media (max-width: 992px) {
-    .main-content {
-        flex-direction: column;
-        gap: var(--spacing-xxxl);
-    }
-
-    .container {
-        padding: var(--spacing-xxxl);
-        max-height: unset;
-        overflow-y: auto;
-    }
-
-    .left-column, .right-column {
-        min-width: unset;
-        gap: var(--spacing-xxxl);
-    }
-
-    h1 {
-        font-size: 2.2em;
-    }
-
-    .user-count-display {
-        font-size: 3em;
-    }
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    margin: var(--hr-margin);
 }
 
-@media (max-width: 576px) {
-    h1 {
-        font-size: 1.8em;
-    }
-
-    .card h2 {
-        font-size: 1.6em;
-    }
-
-    .user-count-display {
-        font-size: 2.8em;
-    }
-
-    .card {
-        padding: var(--spacing-xxl);
-    }
-
-    input, button {
-        font-size: 0.95em;
-        padding: var(--spacing-md);
-    }
+.button-section {
+    margin-top: var(--button-section-margin-top);
+    padding-top: var(--button-section-padding-top);
+    border-top: none;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--button-section-gap);
+}
+.user-count{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
 }

@@ -3,59 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação 07 - Laços e estruturas de desvios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Cadastro de Usuários</title>
 </head>
 <body>
     <div class="container">
         <h1>Cadastro de Usuários</h1>
-
-        <div class="main-content">
-            <div class="left-column">
-                <div class="form-section card">
-                    <h2>Cadastrar Usuário</h2>
-                    <form id="userForm">
-                        <div class="form-group">
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="endereco">Endereço:</label>
-                            <input type="text" id="endereco" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone">Telefone:</label>
-                            <input type="text" id="telefone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <button type="submit">Cadastrar Usuário</button>
-                    </form>
-                    <p id="individualMessage" class="message"></p>
-                </div>
+        
+        <form id="userForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
             </div>
-
-            <div class="right-column">
-                <div class="user-count-card card">
-                    <h2>Total de Usuários</h2>
-                    <p class="user-count-display" id="userCount">0</p>
-                    <button id="refreshUserCount">Atualizar Lista</button>
-                </div>
-
-                <div class="batch-section card">
-                    <h2>Cadastrar 1000 Usuários</h2>
-                    <p>Este processo pode demorar. Por favor, aguarde.</p>
-                    <button id="batchCreateUsers">Cadastrar 1000 Usuários</button>
-                    <p id="batchMessage" class="message"></p>
-                    <p>Progresso: <span id="progress">0</span> / 1000</p>
-                </div>
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required>
             </div>
-        </div>  
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input maxlength="11" type="tel" id="telefone" name="telefone" pattern="[0-9]{2}[0-9]{9}" placeholder="Ex: 11999999999" required>
+                <small>Formato: DDNNNNNNNNN (ex: 11987654321)</small>
+            </div>
+            <button type="submit" class="btn primary">Cadastrar</button>
+        </form>
+
+        <div id="message" class="message"></div>
+
+        <div class="button-section">
+            <h2>Ações Adicionais</h2>
+            <button id="multiUserButton" class="btn secondary">Cadastrar Vários Usuários</button>
+            <div class="user-count">
+
+                <span id="userCountSpan">0</span>
+                <button id="showCountButton" class="btn secondary">Mostrar Quantidade de Usuários </button>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
