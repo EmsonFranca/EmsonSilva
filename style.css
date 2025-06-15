@@ -27,7 +27,7 @@
     /* Tamanhos e Espaçamentos */
     --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --body-margin: 20px;
-    --container-max-width: 500px;
+    --container-max-width: 500px; /* Será o max-width de cada coluna, não do wrapper total */
     --container-padding: 40px;
     --border-radius-base: 12px;
     --box-shadow-base: 0 10px 30px var(--shadow-color);
@@ -54,7 +54,9 @@
     --button-section-margin-top: 30px;
     --button-section-padding-top: 20px;
     --button-section-gap: 10px;
-
+    --main-wrapper-gap: 40px; /* Espaço entre as duas colunas principais */
+    --btn-height: 50px; /* Altura dos botões, ajustável conforme necessário */
+    --btn-width: 200px; /* Largura dos botões, ajustável conforme necessário */
     /* Transições e Animações */
     --transition-speed-fast: 0.2s;
     --transition-speed-medium: 0.3s;
@@ -63,30 +65,54 @@
 
 body {
     font-family: var(--font-family-base);
-    margin: var(--body-margin);
+    margin: 0; /* Remove margem do body para usar o main-wrapper */
     padding: 0;
     background: linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
     color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; /* Transforma o body em flex container */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
     min-height: 100vh;
     box-sizing: border-box;
+    overflow-y: auto; /* Permite scroll se o conteúdo for grande */
+    padding: var(--body-margin) 0; /* Adiciona padding vertical se precisar */
 }
 
+/* Novo wrapper para os dois containers principais */
+.main-wrapper {
+    display: flex; /* Transforma em flex container para os containers internos */
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    justify-content: center; /* Centraliza as colunas */
+    gap: var(--main-wrapper-gap); /* Espaço entre as colunas */
+    max-width: 1200px; /* Largura máxima para o layout lado a lado */
+    width: 95%; /* Ocupa quase toda a largura disponível */
+}
+
+/* Estilo base para ambos os containers (formulário e ações) */
 .container {
-    max-width: var(--container-max-width);
-    width: 90%;
-    margin: var(--body-margin) auto;
     background-color: var(--container-bg);
     padding: var(--container-padding);
     border-radius: var(--border-radius-base);
     box-shadow: var(--box-shadow-base);
     box-sizing: border-box;
+    flex-grow: 1; /* Permite que os containers cresçam */
+    flex-basis: 450px; /* Largura mínima para cada coluna antes de quebrar */
+    margin: 0; /* Remove a margem 'auto' pois o main-wrapper já gerencia */
 }
 
+/* Específicos para a seção do formulário */
+.form-section {
+    /* Pode adicionar estilos específicos se necessário */
+}
+
+/* Específicos para a seção de ações */
+.actions-section {
+    /* Pode adicionar estilos específicos se necessário */
+}
+
+
 h1, h2 {
-    color: var(--secondary-color); /* Usando a cor de texto/secundária */
+    color: var(--secondary-color);
     text-align: center;
     margin-bottom: var(--heading-margin-bottom);
     font-weight: var(--btn-font-weight);
@@ -108,7 +134,7 @@ input[type="email"],
 input[type="tel"] {
     width: 100%;
     padding: var(--input-padding);
-    border: 1px solid var(--border-color); /* Usando a cor de borda */
+    border: 1px solid var(--border-color);
     border-radius: var(--input-border-radius);
     box-sizing: border-box;
     font-size: var(--input-font-size);
@@ -118,8 +144,8 @@ input[type="tel"] {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus {
-    border-color: var(--highlight-color); /* Usando a cor de destaque no foco */
-    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.25); /* Sombra com a cor de destaque */
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.25);
     outline: none;
 }
 
@@ -139,35 +165,34 @@ small {
     cursor: pointer;
     font-size: var(--btn-font-size);
     font-weight: var(--btn-font-weight);
-    color: var(--container-bg); /* Texto do botão branco */
+    color: var(--container-bg);
     transition: background-color var(--transition-speed-medium) ease, transform var(--transition-speed-fast) ease;
     box-sizing: border-box;
     margin-top: var(--btn-margin-top);
 }
 
 .btn.primary {
-    background-color: var(--primary-color); /* Cor principal dos botões */
+    background-color: var(--primary-color);
 }
 
 .btn.primary:hover {
-    background-color: darken(var(--primary-color), 10%); /* Escurece um pouco no hover (conceitual, CSS puro não tem darken) */
-    /* Para CSS puro, você teria que definir uma cor levemente mais escura ou usar filter: brightness() */
-    background-color: #37474F; /* Uma cor mais escura que #455A64 */
+    background-color: #37474F;
     transform: translateY(-2px);
 }
-
+#multiUserButton{
+    height: var(--btn-height);
+    width: var(--btn-width);
+}
 .btn.secondary {
-    background-color: var(--secondary-color); /* Cor secundária dos botões */
-    margin-top: var(--btn-secondary-margin-top);
+    background-color: var(--secondary-color);
     display: inline-block;
     width: auto;
     padding: var(--btn-secondary-padding);
+    margin-top: 0; /* Removido margin-top para alinhamento em flex */
 }
 
 .btn.secondary:hover {
-    background-color: darken(var(--secondary-color), 10%);
-    /* Para CSS puro, você teria que definir uma cor levemente mais escura ou usar filter: brightness() */
-    background-color: #546E7A; /* Uma cor mais escura que #607D8B */
+    background-color: #546E7A;
     transform: translateY(-2px);
 }
 
@@ -211,28 +236,74 @@ small {
     to { opacity: 1; }
 }
 
-hr {
+/* Ajustes no HR para ser um separador vertical em telas grandes e horizontal em pequenas */
+.separator-hr {
     border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
-    margin: var(--hr-margin);
+    height: auto; /* Altura automática para ser flexível */
+    width: 1px; /* Largura para separador vertical */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    margin: 0 var(--main-wrapper-gap); /* Margem horizontal para separação */
 }
 
-.button-section {
-    margin-top: var(--button-section-margin-top);
-    padding-top: var(--button-section-padding-top);
-    border-top: none;
-    text-align: center;
+/* Media Query para telas pequenas: HR volta a ser horizontal */
+@media (max-width: 900px) { /* Ajuste o breakpoint conforme a necessidade */
+    .separator-hr {
+        width: 100%;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+        margin: var(--hr-margin) auto;
+    }
+
+    /* Em telas pequenas, as seções devem se empilhar */
+    .main-wrapper {
+        flex-direction: column;
+        align-items: center; /* Centraliza as colunas empilhadas */
+    }
+
+    .container {
+        width: 90%; /* Ajusta a largura para ocupar mais espaço em telas pequenas */
+        flex-basis: auto; /* Volta ao comportamento padrão de largura */
+    }
+}
+
+
+.actions-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--button-section-gap);
-}
-.user-count{
-    text-align: center;
     margin-top: 20px;
-    font-size: 1.2em;
-    color: var(--secondary-color);
+}
+
+.user-count-display {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--background-light);
+    padding: 10px 15px;
+    border-radius: var(--input-border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.user-count-display .count-label {
+    font-size: 0.9em;
+    color: var(--label-color);
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.user-count-display .count-number {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.button-section {
+    text-align: center;
+    margin-top: 0; /* Removido margem para o actions-wrapper gerenciar */
+    padding-top: 0; /* Removido padding para o actions-wrapper gerenciar */
+    border-top: none;
 }

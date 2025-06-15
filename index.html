@@ -7,39 +7,39 @@
     <title>Cadastro de Usuários</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Cadastro de Usuários</h1>
-        
-        <form id="userForm">
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-            <div class="form-group">
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" required>
-            </div>
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone:</label>
-                <input maxlength="11" type="tel" id="telefone" name="telefone" pattern="[0-9]{2}[0-9]{9}" placeholder="Ex: 11999999999" required>
-                <small>Formato: DDNNNNNNNNN (ex: 11987654321)</small>
-            </div>
-            <button type="submit" class="btn primary">Cadastrar</button>
-        </form>
-
-        <div id="message" class="message"></div>
-
-        <div class="button-section">
-            <h2>Ações Adicionais</h2>
-            <button id="multiUserButton" class="btn secondary">Cadastrar Vários Usuários</button>
-            <div class="user-count">
-
-                <span id="userCountSpan">0</span>
-                <button id="showCountButton" class="btn secondary">Mostrar Quantidade de Usuários </button>
+    <div class="main-wrapper"> 
+        <div class="container form-section"> <h1>Cadastro de Usuários</h1>
+            
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input maxlength="11" type="tel" id="telefone" name="telefone" pattern="[0-9]{2}[0-9]{9}" placeholder="Ex: 11999999999" required>
+                    <small>Formato: DDNNNNNNNNN (ex: 11987654321)</small>
+                </div>
+                <button type="submit" class="btn primary">Cadastrar</button>
+            </form>
+            <div id="message" class="message"></div>
+        </div>
+        <div class="container actions-section"> <h2>Ações Adicionais</h2>
+            <div class="actions-wrapper">
+                <button id="multiUserButton" class="btn secondary">Cadastrar Vários Usuários</button>
+                <div class="user-count-display">
+                    <span class="count-label">Usuários Cadastrados:</span>
+                    <span id="userCountSpan" class="count-number">0</span>
+                    <button id="showCountButton" class="btn secondary">Atualizar Contagem</button>
+                </div>
             </div>
         </div>
     </div>

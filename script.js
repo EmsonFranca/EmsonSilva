@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let successfulCreations = 0;
         let failedCreations = 0;
         
-        for(let i = 0; i < 10; i++) { // Tenta cadastrar 10 usuários
+        for(let i = 0; i < 1000; i++) { // Tenta cadastrar 1000 usuários
             const userData = generateUserData(i);
             try {
                 const response = await fetch(BASE_API_URL + USERS_RESOURCE_PATH, {
