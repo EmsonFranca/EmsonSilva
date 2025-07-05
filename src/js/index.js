@@ -1,202 +1,141 @@
-import {
-  DynamoDBClient,
-  PutItemCommand,
-  ScanCommand,
-  GetItemCommand,
-  UpdateItemCommand,
-  DeleteItemCommand,
-} from "@aws-sdk/client-dynamodb";
-import crypto from "crypto";
+import { 
+  criarAgendamento, 
+  atualizarAgendamento, 
+  listarAgendamentos, 
+  buscarAgendamento, 
+  excluirAgendamentoAPI 
+} from './api.js';
 
-const dynamo = new DynamoDBClient({ region: "us-east-1" });
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("form-agendamento");
+  let agendamentoSelecionado = null;
 
-export const handler = async (event) => {
-  console.log("Event:", JSON.stringify(event));
+  // Carrega agendamentos ao carregar a página
+  carregarAgendamentos();
 
-  const method = event.httpMethod;
-  let path = (event.resource || "").replace(/^\/v1/, "") || "/";
-  const userId = event?.requestContext?.authorizer?.claims?.sub;
+  // Envia formulário
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  if (!userId) {
-    return response(401, { error: "Usuário não autenticado" });
-  }
-
-  if (method === "POST" && path === "/agendamentos") {
-    const body = JSON.parse(event.body || "{}");
-
-    if (!body.nome || !body.telefone || !body.servico || !body.data || !body.horario) {
-      return response(400, { error: "Dados obrigatórios ausentes" });
-    }
-
-    const agendamentoId = crypto.randomUUID();
-
-    const params = {
-      TableName: "Agendamentos",
-      Item: {
-        agendamentoId: { S: agendamentoId },
-        nome: { S: body.nome },
-        telefone: { S: body.telefone },
-        servico: { S: body.servico },
-        data: { S: body.data },
-        horario: { S: body.horario },
-        userId: { S: userId },
-      },
+    const agendamento = {
+      nome: document.getElementById("nome").value.trim(),
+      telefone: document.getElementById("telefone").value.trim(),
+      servico: document.getElementById("servico").value,
+      data: document.getElementById("data").value,
+      horario: document.getElementById("horario").value,
     };
 
-    try {
-      await dynamo.send(new PutItemCommand(params));
-      return response(201, { message: "Agendamento criado", agendamentoId });
-    } catch (error) {
-      console.error(error);
-      return response(500, { error: "Erro ao criar agendamento" });
+    if (Object.values(agendamento).some((v) => !v)) {
+      alert("Preencha todos os campos.");
+      return;
     }
-  }
-
-  if (method === "GET" && path === "/agendamentos") {
-    const params = {
-      TableName: "Agendamentos",
-      FilterExpression: "userId = :uid",
-      ExpressionAttributeValues: {
-        ":uid": { S: userId },
-      },
-    };
 
     try {
-      const data = await dynamo.send(new ScanCommand(params));
-      const items = data.Items.map((item) => unmarshall(item));
-      return response(200, items);
-    } catch (error) {
-      console.error(error);
-      return response(500, { error: "Erro ao buscar agendamentos" });
-    }
-  }
-
-  if (method === "GET" && path.startsWith("/agendamentos/")) {
-    const agendamentoId = event.pathParameters?.id;
-    if (!agendamentoId) return response(400, { error: "ID do agendamento não informado" });
-
-    try {
-      const data = await dynamo.send(
-        new GetItemCommand({
-          TableName: "Agendamentos",
-          Key: { agendamentoId: { S: agendamentoId } },
-        })
-      );
-
-      if (!data.Item) {
-        return response(404, { error: "Agendamento não encontrado" });
+      if (agendamentoSelecionado) {
+        await atualizarAgendamento(agendamentoSelecionado, agendamento);
+        alert("✅ Agendamento atualizado com sucesso!");
+      } else {
+        await criarAgendamento(agendamento);
+        alert("✅ Agendamento criado com sucesso!");
       }
-
-      if (data.Item.userId.S !== userId) {
-        return response(403, { error: "Acesso negado" });
-      }
-
-      const item = unmarshall(data.Item);
-      return response(200, item);
+      form.reset();
+      agendamentoSelecionado = null;
+      await carregarAgendamentos();
     } catch (error) {
-      console.error(error);
-      return response(500, { error: "Erro ao buscar agendamento" });
+      console.error("Erro no submit:", error);
+      alert(`Erro: ${error.message}`);
     }
+  });
+});
+
+/**
+ * Carrega e exibe a lista de agendamentos
+ */
+async function carregarAgendamentos() {
+  const lista = document.getElementById("lista-agendamentos");
+  if (!lista) {
+    console.error("Elemento #lista-agendamentos não encontrado");
+    return;
   }
 
-  if (method === "PUT" && path.startsWith("/agendamentos/")) {
-    const agendamentoId = event.pathParameters?.id;
-    const body = JSON.parse(event.body || "{}");
-
-    if (!agendamentoId) return response(400, { error: "ID do agendamento não informado" });
-
-    try {
-      const exists = await dynamo.send(
-        new GetItemCommand({
-          TableName: "Agendamentos",
-          Key: { agendamentoId: { S: agendamentoId } },
-        })
-      );
-
-      if (!exists.Item) return response(404, { error: "Agendamento não encontrado" });
-      if (exists.Item.userId.S !== userId) return response(403, { error: "Acesso negado" });
-
-      const params = {
-        TableName: "Agendamentos",
-        Key: { agendamentoId: { S: agendamentoId } },
-        UpdateExpression:
-          "SET nome = :nome, telefone = :telefone, servico = :servico, #d = :data, horario = :horario",
-        ExpressionAttributeValues: {
-          ":nome": { S: body.nome },
-          ":telefone": { S: body.telefone },
-          ":servico": { S: body.servico },
-          ":data": { S: body.data },
-          ":horario": { S: body.horario },
-        },
-        ExpressionAttributeNames: {
-          "#d": "data",
-        },
-        ReturnValues: "UPDATED_NEW",
-      };
-
-      const result = await dynamo.send(new UpdateItemCommand(params));
-      return response(200, {
-        message: "Agendamento atualizado",
-        updated: unmarshall(result.Attributes),
-      });
-    } catch (error) {
-      console.error(error);
-      return response(500, { error: "Erro ao atualizar agendamento" });
+  try {
+    lista.innerHTML = "<p>Carregando agendamentos...</p>";
+    
+    const agendamentos = await listarAgendamentos();
+    
+    lista.innerHTML = "";
+    
+    if (agendamentos.length === 0) {
+      lista.innerHTML = "<p>Nenhum agendamento encontrado.</p>";
+      return;
     }
+
+    agendamentos.forEach((a) => {
+      const card = document.createElement("div");
+      card.className = "agendamento-card";
+      card.innerHTML = `
+        <strong>${a.nome}</strong> (${a.telefone})<br>
+        ${a.servico} - ${a.data} às ${a.horario}<br>
+        <button onclick="editarAgendamento('${a.agendamentoId}')">✏️ Editar</button>
+        <button onclick="excluirAgendamento('${a.agendamentoId}')">🗑️ Excluir</button>
+        <hr>
+      `;
+      lista.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar agendamentos:", error);
+    lista.innerHTML = `
+      <p class="error">Falha ao carregar agendamentos</p>
+      <p>${error.message}</p>
+      <p>Verifique a conexão e tente novamente.</p>
+    `;
   }
-
-  if (method === "DELETE" && path.startsWith("/agendamentos/")) {
-    const agendamentoId = event.pathParameters?.id;
-    if (!agendamentoId) return response(400, { error: "ID do agendamento não informado" });
-
-    try {
-      const exists = await dynamo.send(
-        new GetItemCommand({
-          TableName: "Agendamentos",
-          Key: { agendamentoId: { S: agendamentoId } },
-        })
-      );
-
-      if (!exists.Item) return response(404, { error: "Agendamento não encontrado" });
-      if (exists.Item.userId.S !== userId) return response(403, { error: "Acesso negado" });
-
-      await dynamo.send(
-        new DeleteItemCommand({
-          TableName: "Agendamentos",
-          Key: { agendamentoId: { S: agendamentoId } },
-        })
-      );
-      return response(200, { message: "Agendamento excluído" });
-    } catch (error) {
-      console.error(error);
-      return response(500, { error: "Erro ao excluir agendamento" });
-    }
-  }
-
-  return response(404, { error: "Rota não encontrada" });
-};
-
-// Helper para DynamoDB → JS object
-function unmarshall(item) {
-  const obj = {};
-  for (const key in item) {
-    const value = item[key];
-    if ("S" in value) obj[key] = value.S;
-    else if ("N" in value) obj[key] = Number(value.N);
-    else if ("BOOL" in value) obj[key] = value.BOOL;
-    else obj[key] = value;
-  }
-  return obj;
 }
 
-// Helper para montar resposta HTTP
-function response(statusCode, body) {
-  return {
-    statusCode,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
-    body: JSON.stringify(body),
-  };
+/**
+ * Preenche o formulário para edição
+ * @param {string} id - ID do agendamento
+ */
+async function editarAgendamento(id) {
+  try {
+    const data = await buscarAgendamento(id);
+    
+    document.getElementById("nome").value = data.nome;
+    document.getElementById("telefone").value = data.telefone;
+    document.getElementById("servico").value = data.servico;
+    document.getElementById("data").value = data.data;
+    document.getElementById("horario").value = data.horario;
+
+    agendamentoSelecionado = id;
+    
+    // Rola a página até o formulário
+    document.getElementById("form-agendamento").scrollIntoView({ behavior: 'smooth' });
+    alert("Modo de edição ativado. Atualize os dados e clique em Salvar.");
+  } catch (error) {
+    console.error("Erro ao editar agendamento:", error);
+    alert(`Erro ao carregar agendamento para edição: ${error.message}`);
+  }
 }
+
+/**
+ * Exclui um agendamento
+ * @param {string} id - ID do agendamento
+ */
+async function excluirAgendamento(id) {
+  if (!confirm("Tem certeza que deseja excluir este agendamento permanentemente?")) {
+    return;
+  }
+
+  try {
+    await excluirAgendamentoAPI(id);
+    alert("✅ Agendamento excluído com sucesso!");
+    await carregarAgendamentos();
+  } catch (error) {
+    console.error("Erro ao excluir agendamento:", error);
+    alert(`Erro ao excluir agendamento: ${error.message}`);
+  }
+}
+
+// Exporta funções para o escopo global (necessário para os eventos onclick no HTML)
+window.editarAgendamento = editarAgendamento;
+window.excluirAgendamento = excluirAgendamento;
