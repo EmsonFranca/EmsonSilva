@@ -1,0 +1,309 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212; /* fundo bem escuro */
+    color: #f0f0f0; /* texto claro */
+    line-height: 1.6;
+}
+
+a {
+    color: #4da3ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1e6bd6;
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #f0f0f0;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.btn-agendar {
+    background-color: #4da3ff;
+    color: #ffffff;
+}
+
+.hero {
+    background: linear-gradient(to right, #1e1e1e, #2c2c2c);
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #cccccc;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #4da3ff;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #1e6bd6;
+    color: #121212;
+}
+
+.servicos,
+.precos,
+.barbeiros,
+.agendamento,
+.contato {
+    padding: 60px 20px;
+    background-color: #1a1a1a;
+}
+
+.servicos h2,
+.precos h2,
+.barbeiros h2,
+.agendamento h2,
+.contato h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.servico-card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    color: #f0f0f0;
+    transition: transform 0.3s;
+}
+
+.servico-card:hover {
+    transform: translateY(-5px);
+}
+
+.servico-card i {
+    font-size: 48px;
+    color: #4da3ff;
+    margin-bottom: 15px;
+}
+
+.servico-card h3 {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.servico-card p {
+    color: #cccccc;
+}
+
+.precos table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f0f0f0;
+}
+
+.precos table th,
+.precos table td {
+    border: 1px solid #333;
+    padding: 12px;
+    text-align: center;
+}
+
+.precos table th {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.precos table tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+.barbeiros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.barbeiro-card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+.barbeiro-card img {
+    width: 20%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.barbeiro-card h3 {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.barbeiro-card p {
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128c7e;
+    color: #ffffff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #333333;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+}
+
+.form-group input::placeholder {
+    color: #999999;
+}
+
+.container,
+.container__contato {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.contato-info p {
+    margin: 10px 0;
+    color: #cccccc;
+}
+
+.contato-info i {
+    margin-right: 10px;
+    color: #4da3ff;
+}
+
+.social-links a {
+    font-size: 24px;
+    margin-right: 15px;
+    color: #4da3ff;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #1e6bd6;
+}
+
+footer {
+    background-color: #1e1e1e;
+    color: #999999;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.menu-toggle {
+    display: none; /* oculto por padrão; pode implementar depois se desejar menu responsivo */
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        background-color: #1e1e1e;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: #f0f0f0;
+        font-size: 24px;
+    }
+}

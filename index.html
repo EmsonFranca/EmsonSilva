@@ -1,179 +1,171 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./src/assets/images/logo-no-background.png" type="image/x-icon">
-    <title>Emson Silva</title>
-
-    <!-- box icons -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-
-    <!-- custom css -->
-    <link rel="stylesheet" href="./src/assets/css/style.css" />
-    <link rel="shortcut icon" href="./portfolio.png" type="image/x-icon">
-<link rel="manifest" href="./manifest.json">
-<script>
-  if (typeof navigator.serviceWorker !== "undefined") {
-    navigator.serviceWorker.register("./service-worker.js")
-      .then(function(registration) {
-        console.log("Service Worker registered with scope:", registration.scope);
-      })
-      .catch(function(error) {
-        console.error("Service Worker registration failed:", error);
-      });
-  }
-</script>
-  </head>
-
-  <body>
-    <!-- header design -->
-    <header class="header">
-      <a href="#" class="logo"><span>E</span>mson da <span>S</span>ilva <span>F</span>rança</a>
-      <i class='bx bx-menu' id="menu-icon"></i>
-      <nav class="navbar">
-        <a href="#home" class="active">Inicio</a>
-        <a href="#about">Sobre</a>
-        <a href="#services">Serviços</a>
-        <a href="#portfolio">Portfólio</a>
-        <a href="#contact">Contato</a>
-      </nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/styles/style.css">
+    
+    <title>Barbearia Estilo</title>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">
+                <img src="./src/img/logo.png" alt="Corte & Estilo">
+                <h1>Corte & Estilo</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#precos">Preços</a></li>
+                    <li><a href="#barbeiros">Barbeiros</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#agendamento" class="btn-agendar">Agendar</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <!-- home section design -->
-    <section class="home" id="home">
-      <div class="home-content">
-        <h3>Olá, me chamo</h3>
-        <h1>Emson França</h1>
-        <h3>E sou um <span class="multiple-text"></span></h3>
-        <p>Meu nome é Emson França, sou graduado em Bacharelado em Tecnologia da Informação pela Universidade Federal Rural do Semiárido (UFERSA) e atualmente curso Engenharia de Software na mesma instituição. No momento, atuo como desenvolvedor Frontend na AltoTech Junior, empresa júnior localizada no Alto Oeste Potiguar, mais precisamente no campus da UFERSA em Pau dos Ferros.</p>
-        <div class="social-media">
-          <a href="https://www.instagram.com/emson.silva/" target="_blank"><i class='bx bxl-instagram-alt' ></i></a>
-          <a href="https://github.com/EmsonFranca"target="_blank"><i class='bx bxl-github' ></i></a>
-          <a href="https://www.linkedin.com/in/emson-silva/"target="_blank"><i class='bx bxl-linkedin' ></i></a>
+    <section class="hero">
+        <div class="container">
+            <h2>Estilo que Transforma</h2>
+            <p>Agende seu corte ou barba com os melhores profissionais da cidade</p>
+            <a href="#agendamento" class="btn-primary">Agendar Horário</a>
         </div>
-        <a href="./src/assets/Curriculo Profissional - Emson da Silva França.pdf" class="btn" target="_blank">Download CV</a>
-      </div>
-
-      <div class="home-img">
-        <img src="./src/assets/images/home.png" alt="">
-      </div>
     </section>
-    <!-- about section design -->
-    <section class="about" id="about">
-      <div class="about-img">
-        <img src="./src/assets/images/home.png" alt="">
-      </div>
-      <div class="about-content">
-        <h2 class="heading">Sobre <span>mim</span></h2>
-        <h3>Frontend Developer</h3>
-        <p>Como desenvolvedor frontend, meu foco é criar interfaces de usuário atraentes e funcionais para sites e aplicativos web. Uso HTML, CSS e JavaScript para dar vida a ideias digitais, sempre priorizando o design responsivo e a experiência do usuário. Trabalho em equipe, valorizando a criatividade e a acessibilidade na web. É uma jornada emocionante que evolui constantemente com as tendências tecnológicas, e estou ansioso para continuar contribuindo para a web do futuro.</p>
-        <a href="#" class="btn">Read More</a>
-      </div>
-    </section>
-    <!-- services section design -->
-    <section class="services" id="services">
-      <h2 class="heading">Meus <span>Serviços</span></h2>
 
-      <div class="services-container">
-        <div class="services-box">
-          <i class='bx bx-code-alt' ></i>
-          <h3>Web Developer</h3>
-          <p>Possuo formação na área de desenvolvimento Frontend, adquirida por meio de cursos oferecidos pela Oracle, Alura e AdaTec. Detenho um nível avançado de competência nas linguagens HMTL5, CSS3 e JavaScript. Além disso, possuo habilidades intermediárias em programação no Backend, com proficiência em tecnologias como PostgreSQL, Java e C.</p>
-          <a href="#" class="btn">Read More </a>
+    <section id="servicos" class="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <i class="fas fa-cut"></i>
+                    <h3>Corte de Cabelo</h3>
+                    <p>Técnicas modernas para um visual impecável</p>
+                </div>
+                <div class="servico-card">
+                    <i class="fas fa-air-freshener"></i>
+                    <h3>Barba</h3>
+                    <p>Modelagem e tratamento para barba perfeita</p>
+                </div>
+                <div class="servico-card">
+                    <i class="fas fa-crown"></i>
+                    <h3>Combo Completo</h3>
+                    <p>Corte + barba com desconto especial</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    <!-- portfolio section design -->
-    <section class="portfolio" id="portfolio">
-      <h2 class="heading">Meus <span>Projetos</span></h2>
 
-      <div class="portfolio-container">
-        <div class="portfolio-box">
-          <img src="./src/assets/images/portfolio1.jpg" alt="">
-          <div class="portfolio-layer">
-            <h4>(IMC)</h4>
-            <p>O projeto da Calculadora de Índice de Massa Corporal (IMC)</p>
-            <a href="https://EmsonFranca.github.io/Calculadora_de_IMC/" target="_blank"><i class='bx bx-link-external' ></i></a>
-          </div>
+    <section id="precos" class="precos">
+        <div class="container">
+            <h2>Tabela de Preços</h2>
+            <table>
+                <tr>
+                    <th>Serviço</th>
+                    <th>Duração</th>
+                    <th>Preço</th>
+                </tr>
+                <tr>
+                    <td>Corte de Cabelo</td>
+                    <td>40 min</td>
+                    <td>R$ 40,00</td>
+                </tr>
+                <tr>
+                    <td>Barba</td>
+                    <td>30 min</td>
+                    <td>R$ 30,00</td>
+                </tr>
+                <tr>
+                    <td>Corte + Barba</td>
+                    <td>60 min</td>
+                    <td>R$ 60,00</td>
+                </tr>
+                <tr>
+                    <td>Sobrancelha</td>
+                    <td>15 min</td>
+                    <td>R$ 15,00</td>
+                </tr>
+            </table>
         </div>
-        <div class="portfolio-box">
-          <img src="./src/assets/images/portfolio2.jpg" alt="">
-          <div class="portfolio-layer">
-            <h4>Fruta e Fruto</h4>
-            <p>Site para uma empresa fictícia de produtos organicos.</p>
-            <a href="https://EmsonFranca.github.io/Fruta-e-Fruto/"target="_blank"><i class='bx bx-link-external' ></i></a>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="./src/assets/images/portfolio3.jpg" alt="">
-          <div class="portfolio-layer">
-            <h4>Decodificador</h4>
-            <p>Decodificador e codificador de texto.</p>
-            <a href="https://EmsonFranca.github.io/Decodificador-de-Texto/"target="_blank"><i class='bx bx-link-external' ></i></a>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="./src/assets/images/portfolio4.jpg" alt="">
-          <div class="portfolio-layer">
-            <h4>Portfólio</h4>
-            <p>Portfólio baseado no curso da Alura.</p>
-            <a href="https://EmsonFranca.github.io/Emson-Silva/"target="_blank"><i class='bx bx-link-external' ></i></a>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="./src/assets/images/portfolio5.jpg" alt="">
-          <div class="portfolio-layer">
-            <h4>Barbearia</h4>
-            <p>Site desenvolvido para uma Barbearia fictícia.</p>
-            <a href="https://EmsonFranca.github.io/BabeariaAlura/"target="_blank"><i class='bx bx-link-external' ></i></a>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="./src/assets/images/portfolio6.jpg" alt="">
-          <div class="portfolio-layer">
-            <h4>MoniBank</h4>
-            <p>Altenticação de cadastro em um banco fictíco.</p>
-            <a href="https://EmsonFranca.github.io/MoniBank/index.html" target="_blank"><i class='bx bx-link-external' ></i></a>
-          </div>
-        </div>
-      </div>
     </section>
-    <!-- contact section design -->
-    <section class="contact" id="contact">
-      <h2 class="heading">Entre em <span>contato!</span></h2>
 
-      <form action="#">
-        <div class="input-box">
-          <input type="text" placeholder="Full name" required>
-          <input type="email" placeholder="Email Address" required>
+    <section id="barbeiros" class="barbeiros">
+        <div class="container">
+            <h2>Nossos Barbeiros</h2>
+            <div class="barbeiros-grid">
+                <div class="barbeiro-card">
+                    <img src="./src/img/perfil-barbeiro.jpg" alt="Barbeiro João">
+                    <h3>João Silva</h3>
+                    <p>Especialista em cortes modernos</p>
+                    <a href="https://wa.me/5511999999999" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Contato
+                    </a>
+                </div>
+                <!-- Adicione mais barbeiros conforme necessário -->
+            </div>
         </div>
-        <div class="input-box">
-          <input type="number" placeholder="Mobile Number"required>
-          <input type="text" placeholder="Email Subject"required>
-        </div>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"required></textarea>
-        <input type="submit" value="Send Message" class="btn">
-      </form>
     </section>
-    <!-- footer design -->
-    <footer class="footer">
-      <div class="footer-text">
-        <p>Copyright &copy; 2023 Emson da Silva França</p>
-      </div>
 
-      <div class="footer-iconTop">
-        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
-      </div>
+    <section id="agendamento" class="agendamento">
+        <div class="container">
+            <h2>Agende Seu Horário</h2>
+            <form id="form-agendamento">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" required>
+                </div>
+                <div class="form-group">
+                    <label for="servico">Serviço:</label>
+                    <select id="servico" required>
+                        <option value="">Selecione...</option>
+                        <option value="corte">Corte de Cabelo</option>
+                        <option value="barba">Barba</option>
+                        <option value="combo">Corte + Barba</option>
+                        <option value="sobrancelha">Sobrancelha</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" required>
+                </div>
+                <div class="form-group">
+                    <label for="horario">Horário:</label>
+                    <input type="time" id="horario" min="09:00" max="19:00" required>
+                </div>
+                <button type="submit" class="btn-primary">Confirmar Agendamento</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="container__contato">
+            <h2>Contato</h2>
+            <div class="contato-info">
+                <p><i class="fas fa-map-marker-alt"></i> Rua da Barbearia, 123 - Centro</p>
+                <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@corteestilo.com.br</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Corte & Estilo - Todos os direitos reservados</p>
+            <p>Horário de funcionamento: Terça a Sexta 09:00 - 19:00 | Sábado 08:00 - 17:00</p>
+        </div>
     </footer>
 
-    <!-- scroll reveal -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!-- typed js -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-    <!-- custom js -->
-    <script src="./src/assets/js/script.js"></script>
-  </body>
+    <script src="./src/js/index.js"></script>
+</body>
 </html>
