@@ -3,48 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Agendamentos - Barbearia Estilo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="./styles/agendamento.css">
-    <title>Lista de Agendamentos - Barbearia Estilo</title>
 </head>
 
 <body>
-    <header>
+    <header class="sticky-header">
         <div class="container header-container">
-            <div class="menu-toggle">
+            <button class="menu-toggle" aria-label="Menu">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
             <div class="logo">
-                <img src="../img/logo.png" alt="Corte & Estilo">
+                <img src="../img/logo.png" alt="Corte & Estilo" width="50" height="50">
                 <h1>Corte & Estilo</h1>
             </div>
-            <nav>
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html#servicos">Serviços</a></li>
-                    <li><a href="index.html#precos">Preços</a></li>
-                    <li><a href="index.html#barbeiros">Barbeiros</a></li>
-                    <li><a href="index.html#contato">Contato</a></li>
-                    <li><a href="../../index.html" class="btn-agendar">Agendar</a></li>
-                    <li><a href="agendamentos.html" class="btn-agendar active">Agendamentos</a></li>
+                    <li><a href="../index.html#servicos">Serviços</a></li>
+                    <li><a href="../index.html#precos">Preços</a></li>
+                    <li><a href="../index.html#barbeiros">Barbeiros</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
+                    <li><a href="../index.html#agendamento" class="btn-agendar">Agendar</a></li>
+                    <li><a href="agendamentos.html" class="btn-agendar active">Meus Agendamentos</a></li>
                 </ul>
             </nav>
+            <div id="auth-section" class="auth-section"></div>
         </div>
     </header>
 
-    <section class="lista">
-        <div class="container">
-            <h2>Lista de Agendamentos</h2>
-            <div id="lista-agendamentos"></div>
+    <main class="container">
+        <h1>Meus Agendamentos</h1>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="filter-status">Status:</label>
+                <select id="filter-status">
+                    <option value="all">Todos</option>
+                    <option value="confirmado">Confirmados</option>
+                    <option value="cancelado">Cancelados</option>
+                    <option value="concluido">Concluídos</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="filter-date">Data:</label>
+                <input type="date" id="filter-date">
+            </div>
+            
+            <button id="btn-filter" class="btn-primary">Filtrar</button>
+            <button id="btn-reset" class="btn-secondary">Limpar</button>
         </div>
-    </section>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando agendamentos...</p>
+        </div>
+
+        <div id="agendamentos-list" class="agendamentos-grid"></div>
+
+        <div id="no-results" class="no-results">
+            <i class="far fa-calendar-times"></i>
+            <p>Nenhum agendamento encontrado</p>
+            <a href="../index.html#agendamento" class="btn-primary">Agendar Horário</a>
+        </div>
+
+        <div class="pagination">
+            <button id="btn-prev" class="btn-pagination" disabled>
+                <i class="fas fa-chevron-left"></i> Anterior
+            </button>
+            <span id="page-info">Página 1 de 1</span>
+            <button id="btn-next" class="btn-pagination">
+                Próxima <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Corte & Estilo - Todos os direitos reservados</p>
-            <p>Horário de funcionamento: Terça a Sexta 09:00 - 19:00 | Sábado 08:00 - 17:00</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Horário</h3>
+                    <p>Terça a Sexta: 09:00 - 19:00</p>
+                    <p>Sábado: 08:00 - 17:00</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@corteestilo.com.br</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Corte & Estilo - Todos os direitos reservados</p>
+            </div>
         </div>
     </footer>
 
-    <script type="module" src="./src/js/index.js"></script>
+    <!-- Modal de Confirmação -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title"></h3>
+            <div id="modal-message"></div>
+            <div class="modal-actions">
+                <button id="modal-confirm" class="btn-primary">Confirmar</button>
+                <button id="modal-cancel" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/agendamentos.js"></script>
+    <script type="module" src="../js/auth.js"></script>
 </body>
 </html>
